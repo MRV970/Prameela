@@ -1,0 +1,239 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 98566144 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3600), pid=25208, tid=29092
+#
+# JRE version:  (21.0.1+12) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (21.0.1+12-LTS-29, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages cucumber.api.cli.Main C:/Users/RAGHAVAMMA/eclipse-workspace/MOCK1/PRAMEELA/src/test/java/FeatureFiles/FOM_Order.feature --glue classpath: --plugin pretty --monochrome
+
+Host: AMD Ryzen 3 7320U with Radeon Graphics         , 8 cores, 5G,  Windows 11 , 64 bit Build 22621 (10.0.22621.5415)
+Time: Mon Jul  7 23:01:19 2025 India Standard Time elapsed time: 0.030477 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001ca3795f4d0):  JavaThread "Unknown thread" [_thread_in_vm, id=29092, stack(0x0000000468e00000,0x0000000468f00000) (1024K)]
+
+Stack: [0x0000000468e00000,0x0000000468f00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6c9029]
+V  [jvm.dll+0x854b81]
+V  [jvm.dll+0x856e5e]
+V  [jvm.dll+0x857543]
+V  [jvm.dll+0x280c06]
+V  [jvm.dll+0x6c5715]
+V  [jvm.dll+0x6ba10a]
+V  [jvm.dll+0x3557ea]
+V  [jvm.dll+0x35d436]
+V  [jvm.dll+0x3ae1be]
+V  [jvm.dll+0x3ae468]
+V  [jvm.dll+0x3291fc]
+V  [jvm.dll+0x329d8b]
+V  [jvm.dll+0x81d179]
+V  [jvm.dll+0x3bb4f1]
+V  [jvm.dll+0x805ae8]
+V  [jvm.dll+0x44effe]
+V  [jvm.dll+0x450901]
+C  [jli.dll+0x52a3]
+C  [ucrtbase.dll+0x29333]
+C  [KERNEL32.DLL+0x1259d]
+C  [ntdll.dll+0x5af78]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffe0a049b88, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x000001ca379a13e0 WorkerThread "GC Thread#0"                     [id=32996, stack(0x0000000468f00000,0x0000000469000000) (1024K)]
+  0x000001ca379af400 ConcurrentGCThread "G1 Main Marker"            [id=33392, stack(0x0000000469000000,0x0000000469100000) (1024K)]
+  0x000001ca379b0b10 WorkerThread "G1 Conc#0"                       [id=32524, stack(0x0000000469100000,0x0000000469200000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffe097bc2c7]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffe0a0ba6f8] Heap_lock - owner thread: 0x000001ca3795f4d0
+
+Heap address: 0x00000000a2c00000, size: 1492 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000a2c00000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffe09ba1be9]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.021 Loaded shared library C:\Program Files\Java\jdk-21\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff73ad90000 - 0x00007ff73ada0000 	C:\Program Files\Java\jdk-21\bin\javaw.exe
+0x00007ffe33e30000 - 0x00007ffe34047000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffe33a00000 - 0x00007ffe33ac4000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffe31540000 - 0x00007ffe31912000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffe31920000 - 0x00007ffe31a31000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffe184a0000 - 0x00007ffe184b9000 	C:\Program Files\Java\jdk-21\bin\jli.dll
+0x00007ffe32e50000 - 0x00007ffe32f01000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffe33210000 - 0x00007ffe332b7000 	C:\Windows\System32\msvcrt.dll
+0x00007ffe0bbb0000 - 0x00007ffe0bbcb000 	C:\Program Files\Java\jdk-21\bin\VCRUNTIME140.dll
+0x00007ffe33810000 - 0x00007ffe338b8000 	C:\Windows\System32\sechost.dll
+0x00007ffe31060000 - 0x00007ffe31088000 	C:\Windows\System32\bcrypt.dll
+0x00007ffe32900000 - 0x00007ffe32a14000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffe33c30000 - 0x00007ffe33de1000 	C:\Windows\System32\USER32.dll
+0x00007ffe31490000 - 0x00007ffe314b6000 	C:\Windows\System32\win32u.dll
+0x00007ffe32b10000 - 0x00007ffe32b39000 	C:\Windows\System32\GDI32.dll
+0x00007ffe31150000 - 0x00007ffe31273000 	C:\Windows\System32\gdi32full.dll
+0x00007ffe181e0000 - 0x00007ffe1847b000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5547_none_27104afb73855772\COMCTL32.dll
+0x00007ffe313f0000 - 0x00007ffe3148a000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffe30b80000 - 0x00007ffe30b8a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffe332d0000 - 0x00007ffe33301000 	C:\Windows\System32\IMM32.DLL
+0x0000000054e70000 - 0x0000000054e7c000 	C:\Program Files (x86)\360\Total Security\safemon\SafeWrapper.dll
+0x00007ffe0a230000 - 0x00007ffe0a2dc000 	C:\Program Files (x86)\360\Total Security\safemon\libzdtp64.dll
+0x00007ffe31ae0000 - 0x00007ffe32382000 	C:\Windows\System32\SHELL32.dll
+0x00007ffe30f20000 - 0x00007ffe3105f000 	C:\Windows\System32\wintypes.dll
+0x00007ffe33470000 - 0x00007ffe33803000 	C:\Windows\System32\combase.dll
+0x00007ffe32a20000 - 0x00007ffe32a89000 	C:\Windows\System32\SHLWAPI.dll
+0x00007ffe0c270000 - 0x00007ffe0c27c000 	C:\Program Files\Java\jdk-21\bin\vcruntime140_1.dll
+0x00007ffe0a1a0000 - 0x00007ffe0a22e000 	C:\Program Files\Java\jdk-21\bin\msvcp140.dll
+0x00007ffe09480000 - 0x00007ffe0a195000 	C:\Program Files\Java\jdk-21\bin\server\jvm.dll
+0x00007ffe32a90000 - 0x00007ffe32b01000 	C:\Windows\System32\WS2_32.dll
+0x00007ffe30840000 - 0x00007ffe3088d000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ffe2c4a0000 - 0x00007ffe2c4d4000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffe307b0000 - 0x00007ffe307c3000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ffe2fee0000 - 0x00007ffe2fef8000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffe1b130000 - 0x00007ffe1b13a000 	C:\Program Files\Java\jdk-21\bin\jimage.dll
+0x00007ffe2e920000 - 0x00007ffe2eb53000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffe32810000 - 0x00007ffe328e7000 	C:\Windows\System32\OLEAUT32.dll
+0x00007ffe15c80000 - 0x00007ffe15cb2000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffe31a40000 - 0x00007ffe31abb000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffe0be30000 - 0x00007ffe0be4f000 	C:\Program Files\Java\jdk-21\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-21\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5547_none_27104afb73855772;C:\Program Files (x86)\360\Total Security\safemon;C:\Program Files\Java\jdk-21\bin\server
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: cucumber.api.cli.Main C:/Users/RAGHAVAMMA/eclipse-workspace/MOCK1/PRAMEELA/src/test/java/FeatureFiles/FOM_Order.feature --glue classpath: --plugin pretty --monochrome
+java_class_path (initial): C:\Users\RAGHAVAMMA\eclipse-workspace\MOCK1\PRAMEELA\target\classes;C:\Users\RAGHAVAMMA\eclipse-workspace\MOCK1\PRAMEELA\target\test-classes;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-java\4.19.1\selenium-java-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-api\4.19.1\selenium-api-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.19.1\selenium-chrome-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.19.1\selenium-chromium-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-json\4.19.1\selenium-json-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.19.1\selenium-manager-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v121\4.19.1\selenium-devtools-v121-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v122\4.19.1\selenium-devtools-v122-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v123\4.19.1\selenium-devtools-v123-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.19.1\selenium-devtools-v85-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.19.1\selenium-edge-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.19.1\selenium-firefox-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-http\4.19.1\selenium-http-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.19.1\selenium-ie-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.19.1\selenium-remote-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\guava\guava\33.1.0-jre\guava-33.1.0-jre.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.23.1-alpha\opentelemetry-semconv-1.23.1-alpha.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-api\1.36.0\opentelemetry-api-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-context\1.36.0\opentelemetry-context-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.36.0\opentelemetry-exporter-logging-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.36.0\opentelemetry-sdk-common-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.36.0\opentelemetry-sdk-extension-autoconfigure-spi-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.36.0\opentelemetry-sdk-extension-autoconfigure-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-api-events\1.36.0-alpha\opentelemetry-api-events-1.36.0-alpha.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.36.0\opentelemetry-sdk-trace-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-extension-incubator\1.36.0-alpha\opentelemetry-extension-incubator-1.36.0-alpha.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.36.0\opentelemetry-sdk-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.36.0\opentelemetry-sdk-metrics-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.36.0\opentelemetry-sdk-logs-1.36.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\net\bytebuddy\byte-buddy\1.14.12\byte-buddy-1.14.12.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-os\4.19.1\selenium-os-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\apache\commons\commons-exec\1.3\commons-exec-1.3.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.19.1\selenium-safari-driver-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-support\4.19.1\selenium-support-4.19.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\testng\testng\7.11.0\testng-7.11.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\jcommander\jcommander\1.83\jcommander-1.83.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-core\7.22.0\cucumber-core-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-gherkin\7.22.0\cucumber-gherkin-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-gherkin-messages\7.22.0\cucumber-gherkin-messages-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\gherkin\32.1.0\gherkin-32.1.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\messages\27.2.0\messages-27.2.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\testng-xml-formatter\0.3.1\testng-xml-formatter-0.3.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\query\13.3.0\query-13.3.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\tag-expressions\6.1.2\tag-expressions-6.1.2.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-expressions\18.0.1\cucumber-expressions-18.0.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\datatable\7.22.0\datatable-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-plugin\7.22.0\cucumber-plugin-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\docstring\7.22.0\docstring-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\html-formatter\21.10.0\html-formatter-21.10.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\junit-xml-formatter\0.7.1\junit-xml-formatter-0.7.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\ci-environment\10.0.1\ci-environment-10.0.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-java\7.22.0\cucumber-java-7.22.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\io\cucumber\cucumber-testng\7.22.0\cucumber-testng-7.22.0.jar;C:\Users\RAGHAVAMMA\.p2\pool\plugins\org.testng_7.4.0.r202105021533.jar;C:\Users\RAGHAVAMMA\.p2\pool\plugins\com.beust.jcommander_1.78.0.jar;C:\Users\RAGHAVAMMA\.p2\pool\plugins\org.apache-extras.beanshell.bsh_2.0.0.b6.jar;C:\Users\RAGHAVAMMA\.p2\pool\plugins\org.yaml.snakeyaml_1.21.0.jar;C:\Users\RAGHAVAMMA\.p2\pool\plugins\org.webjars.jquery_3.5.1.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-support\4.21.0\selenium-support-4.21.0.jar;C:\Users\RAGHAVAMMA\.m2\repository\org\seleniumhq\selenium\selenium-api\4.21.0\selenium-api-4.21.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 98566144                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1564475392                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 1564475392                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\oracle\product\10.2.0\db_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\RAGHAVAMMA\Downloads\apache-maven-3.9.7-bin\apache-maven-3.9.7\bin;C:\AutomationSoftware\apache-maven-3.9.8\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\RAGHAVAMMA\apache-maven-3.9.10\bin;C:\Users\RAGHAVAMMA\allure-2.34.0\bin;C:\Users\RAGHAVAMMA\AppData\Local\Microsoft\WindowsApps;C:\Users\RAGHAVAMMA\AppData\Roaming\npm;C:\Users\RAGHAVAMMA\Downloads\Microsoft VS Code\bin
+USERNAME=RAGHAVAMMA
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 160 Stepping 0, AuthenticAMD
+TMP=C:\Users\RAGHAV~1\AppData\Local\Temp
+TEMP=C:\Users\RAGHAV~1\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.5415)
+OS uptime: 1 days 10:56 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (8 cores per cpu, 2 threads per core) family 23 model 160 stepping 0 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, rdpid, f16c
+Processor Information for all 8 processors :
+  Max Mhz: 2401, Current Mhz: 2401, Mhz Limit: 2401
+
+Memory: 4k page, system-wide physical 5965M (107M free)
+TotalPageFile size 24397M (AvailPageFile size 61M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 60M, peak: 154M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (21.0.1+12-LTS-29) for windows-amd64 JRE (21.0.1+12-LTS-29), built on 2023-10-05T13:27:09Z by "mach5one" with MS VC++ 17.1 (VS2022)
+
+END.
