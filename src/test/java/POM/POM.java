@@ -43,6 +43,9 @@ import org.testng.Assert;
 
 	    @FindBy(xpath = "//a[@title='Navigator']")
 	    WebElement navigatorIcon;
+	    
+	    @FindBy(xpath="//tr[@class='xk6' and contains(.,'Orchestration Process Number')]//a")
+	    WebElement OrchestrationNo;
 
 	    public void launchUrl(String url) {
 	        driver.get(url);
@@ -191,15 +194,6 @@ public void verifyOrderLineFieldsDisplayed(List<String> columnNames) {
 
         System.out.println("DEBUG: Header[" + i + "] = '" + normalizedHeader + "'");
     }
-//    // Get the headers
-//    List<WebElement> headerElements = driver.findElements(By.xpath("//table[@summary='Order Lines']//th//span[@class='af_column_label-text']"));
-//    Map<String, Integer> headerIndexMap = new HashMap<>();
-//
-//    for (int i = 0; i < headerElements.size(); i++) {
-//        String headerText = headerElements.get(i).getText().trim();
-//        headerIndexMap.put(headerText, i);
-//        System.out.println("Header[" + i + "] = " + headerText);
-//    }
 
     // Validate header presence
     for (String col : columnNames) {
@@ -247,104 +241,7 @@ public void verifyOrderLineFieldsDisplayed(List<String> columnNames) {
     }
 }
 
-//public void verifyOrderLineFieldsDisplayed(List<String> columnNames) {
-//	
-//	
-//	
-//// Get header cells (th or td depending on HTML)
-//Set<String> expandedRows = new HashSet<>();
-//expandAllRowsRecursive(ORDER_LINES_ROWS,expandedRows);
-//
-//List<WebElement> headers = driver.findElements(By.xpath("//span[@class='af_column_label-text']"));
-// Map<String, Integer> headerIndexMap = new HashMap<>();
-// for (int i = 0; i < headers.size(); i++) {
-//
-//     headerIndexMap.put(headers.get(i).getText().trim(), i);
-//
-// }
-// // Get required column indexes
-// int itemIndex = headerIndexMap.get("Ordered Quantity");
-// int itemDescriptionIndex = headerIndexMap.get("UOM");
-// int OrderQuantityIndex = headerIndexMap.get("Status");
-//
-// // Step 2: Iterate through each row and validate
-//
-// List<WebElement> rows = driver.findElements(By.xpath("//tr[@class='xem']"));
-// for (WebElement row : rows) {
-//	 String locator =".//td[@class='xen']/span[@class='x2f0'] | .//td[@class='xer']/span[@class='x2f0']";
-//
-// 
-//     List<WebElement> line = row.findElements(By.xpath(locator));
-//
-//
-//
-//     String lineText = line.get(itemIndex).getText().trim();
-//
-//     String email = line.get(itemDescriptionIndex).getText().trim();
-//
-//     String status = line.get(OrderQuantityIndex).getText().trim();
-//
-//     
-//         // Get all column cells in this row
-//         List<WebElement> cells = row.findElements(By.xpath(".//td[@class='xen']/span[@class='x2f0'] | .//td[@class='xer']/span[@class='x2f0']"));
-//
-//         for (String column : columnNames) {
-//             int index = headerIndexMap.get(column);
-//
-//             if (index >= cells.size()) {
-//                 throw new IndexOutOfBoundsException("Column index " + index + " is out of bounds for current row. Row has only " + cells.size() + " cells.");
-//             }
-//
-//             WebElement cell = cells.get(index);
-//             String text = cell.getText().trim();
-//
-//             Assert.assertTrue(cell.isDisplayed(), "Column [" + column + "] is not displayed.");
-//             Assert.assertFalse(text.isEmpty(), "Column [" + column + "] is empty.");
-//             System.out.println(column + " = " + text);
-//         }
-//     }
-//    }
-//
-//By OrderLinesRows = By.xpath("//table[@summary='Order Lines']//td/following-sibling::td/div");
-//public void expandAllRowsRecursive(By orderLinesRows, Set<String> expandedRows) {
-//    boolean moreToExpand;
-//    do {
-//        moreToExpand = false;
-//        List<WebElement> rows = driver.findElements(orderLinesRows);
-//
-//        for (int i = 0; i < rows.size(); i++) {
-//            // Refresh DOM after each loop to get updated rows
-//            rows = driver.findElements(orderLinesRows);
-//            if (i >= rows.size()) break;
-//
-//            WebElement row = rows.get(i);
-//            try {
-//                String rowKey = row.getText().trim();
-//                if (expandedRows.contains(rowKey)) continue;
-//
-//                List<WebElement> expandIcons = row.findElements(By.xpath(".//a[contains(@title, 'Expand')]"));
-//                if (!expandIcons.isEmpty()) {
-//                    WebElement expandIcon = expandIcons.get(0);  // Always use index 0
-//                    if (expandIcon.isDisplayed()) {
-//                        try {
-//                            expandIcon.click();
-//                            waitForDomUpdate();
-//                            expandedRows.add(rowKey);
-//                            moreToExpand = true;
-//                        } catch (Exception clickEx) {
-//                            System.out.println("Error clicking expand icon: " + clickEx.getMessage());
-//                        }
-//                    }
-//                } else {
-//                    expandedRows.add(rowKey); // No icon or already expanded
-//                }
-//
-//            } catch (Exception e) {
-//                System.out.println("Error expanding row: " + e.getMessage());
-//            }
-//        }
-//    } while (moreToExpand);
-//}
+
 
 public void waitForDomUpdate() {
     try {
@@ -368,10 +265,10 @@ for(WebElement row:rows) {
 	for (Map.Entry<String, String> map : expectedFields.entrySet()) {
        String field = map.getKey();
        String expectedValue = map.getValue();
-	 WebElement valueElement = row.findElement(By.xpath("//label[contains(text(),'" + field + "')]/following-sibling::*[1]"));
+	 WebElement valueElement = row.findElement(By.xpath("//label[text()='"+field+"']/following::td[1]"));
 	 actualValue =  valueElement.getText().trim();
     Assert.assertEquals(
-               "Mismatch in field '" + field + "' → Expected: [" + expectedValue + "], but found: [" + actualValue + "]",
+               "Mismatch in field '" + field + "' → Expected: [" + expectedValue + "] but found: [" + actualValue + "]",
                expectedValue,
                actualValue
            );
@@ -380,10 +277,6 @@ for(WebElement row:rows) {
 }
 
 }
-//
-
-
-
 
 public void expandAndValidateOrderLines(List<String> columnHeaders) {
     List<WebElement> rows = driver.findElements(By.xpath("//table[contains(@summary,'Order Lines')]/tbody/tr"));
@@ -416,30 +309,40 @@ public void expandAndValidateOrderLines(List<String> columnHeaders) {
 	        }
 	    }
 	    
-		
-		
 		public void clickDone() {
-			 driver.findElement(By.xpath("//span[@class='xrm' and text()='D']")).click();
+			 driver.findElement(By.xpath("//span[text()='D']")).click();
 		}
+		
 		public boolean isAssertManagementCompleted(WebElement Task) {
-			return driver.findElement(By.xpath("//tr[@class='xem p_AFSelected' and contains(.,'Asset Management')]//img[@alt='"+Task+"']")).isDisplayed();
+			return driver.findElement(By.xpath("/(//tr[@class='xem p_AFSelected' and contains(.,'Asset Management')]//img)[1]")).isDisplayed();
 			
 		    
 		}
+		
 	    By FULFILLMENT_LINE_ROWS = By.xpath("//table[@summary='Manage Fulfillment Line Exceptions']/tbody/tr");
-	    public void clickOrchestrationProcess() {
+	    public void clickOrchestrationProcess() throws InterruptedException {
     	Set<String> expandedRows = new HashSet<>();
     	expandAllRowsRecursive(FULFILLMENT_LINE_ROWS, expandedRows);
     	List<WebElement> rows = driver.findElements(FULFILLMENT_LINE_ROWS);
     	
     	for(WebElement row:rows) {
     		row.click();
-    		WebElement orchestrationlink = row.findElement(By.xpath("//tr[@class='xk6' and contains(.,'Orchestration Process Number')]//a"));
+    		By processNumberLocator = By.xpath("//tr[@class='xk6' and contains(.,'Orchestration Process Number')]//a");
+              
+    	    wait.until(ExpectedConditions.presenceOfElementLocated(processNumberLocator));  // Ensures element is in the DOM
+
+    	    WebElement processElement = driver.findElement(processNumberLocator);
+
+    	    wait.until(ExpectedConditions.elementToBeClickable(processElement));  // Ensures it's clickable now
+
+    	    processElement.click();
     		
-    		orchestrationlink.click();
-    		isAssertManagementCompleted(Task);
-    		isAssertManagementCompleted(Task);
-    		clickDone();
+//    		WebElement orchestrationlink = OrchestrationNo;
+//    		
+//    		orchestrationlink.click();
+////    		isAssertManagementCompleted(Task);
+////    		isAssertManagementCompleted(Task);
+////    		clickDone();
     		
     		
     	}

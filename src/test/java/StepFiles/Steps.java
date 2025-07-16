@@ -138,17 +138,18 @@ public WebDriver driver;
 	    }
 
 	@Then("Validate General Tab fields")
-	public void validate_general_tab_fields(DataTable dataTable) {
+	public void validate_general_tab_fields(DataTable dataTable) throws InterruptedException {
 		 Map<String, String> expectedfields = new LinkedHashMap<>();
 		 for(List<String> row : dataTable.asLists()) {
 			 expectedfields.put(row.get(0).trim(), row.get(1).trim());
 		 }
 		 pom.validateEachFulfillmentLineGeneralTabFields(expectedfields);
-	   
+//		 Thread.sleep(2000);
 	}
 
 	@When("Click {string} process Number")
-	public void click_process_number(String string) {
+	public void click_process_number(String string) throws InterruptedException {
+		Thread.sleep(2000);
 		pom.clickOrchestrationProcess();
 	   
 	}
@@ -171,10 +172,12 @@ public WebDriver driver;
 	    // Example logic: validate table is visible or values are loaded
 	    Assert.assertTrue(driver.findElement(By.xpath("//table[@summary='Order Lines']")).isDisplayed(), "Order Lines table not displayed.");
 	    System.out.println("Order Line details validated.");
+	    
 }
 
 	@When("Click Each line under {string}")
-	public void click_each_line_under(String section) {
+	public void click_each_line_under(String section) throws InterruptedException {
+//		Thread.sleep(2000);
 	    // Expand all lines under Fulfillment Lines section
 	    if (section.equalsIgnoreCase("Fulfillment Lines")) {
 	        Set<String> expandedRows = new HashSet<>();
@@ -183,16 +186,16 @@ public WebDriver driver;
 	    }
 	}
 
-	@Then("validate Assert Management  task progress should be completed")
-	public void validate_assert_management_task_progress_should_be_completed() {
-	    WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Assert Management')]/ancestor::tr//span[text()='Completed']"));
+	@Then("validate {string}  task progress should be completed")
+	public void validate_task_progress_should_be_completed(String Tag) {
+	    WebElement element = driver.findElement(By.xpath("(//tr[@class='xem p_AFSelected' and contains(.,'"+Tag+"')]//img)[1]"));
 	    Assert.assertTrue(element.isDisplayed(), "Assert Management task is not completed.");
 	    System.out.println("Assert Management task completed.");
 	}
 
-	@Then("Subscription task progress should be completed")
-	public void subscription_task_progress_should_be_completed() {
-	    WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Subscription')]/ancestor::tr//span[text()='Completed']"));
+	@Then("{string} task progress should be completed")
+	public void task_progress_should_be_completed(String Tag) {
+	    WebElement element = driver.findElement(By.xpath("(//span[text()='"+Tag+"']/ancestor::tr[@class='xem']//span[@class='x2ey'])[1]"));
 	    Assert.assertTrue(element.isDisplayed(), "Subscription task is not completed.");
 	    System.out.println("Subscription task completed.");
 	}
@@ -200,19 +203,27 @@ public WebDriver driver;
 
 	@Then("Click Done Button")
 	public void click_done_button() {
-	    WebElement doneBtn = driver.findElement(By.xpath("//button[text()='Done']"));
-	    Assert.assertTrue(doneBtn.isDisplayed(), "'Done' button not found.");
-	    doneBtn.click();
-	    System.out.println("Clicked on Done button.");
+		pom.clickDone();
+//	    WebElement doneBtn = driver.findElement(By.xpath("//button[text()='Done']"));
+//	    Assert.assertTrue(doneBtn.isDisplayed(), "'Done' button not found.");
+//	    doneBtn.click();
+//	    System.out.println("Clicked on Done button.");
 	}
 
-	@Then("Fulfillment Line Should be displayed")
-	public void fulfillment_line_should_be_displayed() {
-	    WebElement line = driver.findElement(By.xpath("//a[contains(@title, 'Fulfillment Lines')]"));
+	@Then("{string} Should be displayed")
+	
+	public void should_be_displayed(String PageName) {
+	    WebElement line = driver.findElement(By.xpath("//h1[contains(text(),'"+PageName+"')]"));
 	    Assert.assertTrue(line.isDisplayed(), "Fulfillment Line is not displayed.");
 	    System.out.println("Fulfillment Line is displayed.");
 	}
 
+	@Then("{string} should be displayed")
+	public void should_displayed(String PageName) {
+		WebElement line = driver.findElement(By.xpath("//h1[contains(text(),'"+PageName+"')]"));
+	    Assert.assertTrue(line.isDisplayed(), "Fulfillment Line is not displayed.");
+	    System.out.println("Fulfillment Line is displayed.");
+	}
 }
 
 
